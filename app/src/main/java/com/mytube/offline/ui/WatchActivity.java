@@ -105,11 +105,11 @@ public class WatchActivity extends AppCompatActivity {
             tvDuration.setText(formatTime(dur));
             // Auto-start playback once prepared.
             videoView.start();
-            btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+            btnPlay.setImageResource(R.drawable.ic_pause);
             handler.post(updateTicker);
         });
         videoView.setOnCompletionListener(mp -> {
-            btnPlay.setImageResource(android.R.drawable.ic_media_play);
+            btnPlay.setImageResource(R.drawable.ic_play);
             seekBar.setProgress(0);
         });
         videoView.setOnErrorListener((mp, what, extra) -> {
@@ -121,10 +121,10 @@ public class WatchActivity extends AppCompatActivity {
         btnPlay.setOnClickListener(v -> {
             if (videoView.isPlaying()) {
                 videoView.pause();
-                btnPlay.setImageResource(android.R.drawable.ic_media_play);
+                btnPlay.setImageResource(R.drawable.ic_play);
             } else {
                 videoView.start();
-                btnPlay.setImageResource(android.R.drawable.ic_media_pause);
+                btnPlay.setImageResource(R.drawable.ic_pause);
             }
         });
 
@@ -160,7 +160,7 @@ public class WatchActivity extends AppCompatActivity {
         super.onPause();
         if (videoView.isPlaying()) {
             videoView.pause();
-            btnPlay.setImageResource(android.R.drawable.ic_media_play);
+            btnPlay.setImageResource(R.drawable.ic_play);
         }
     }
 

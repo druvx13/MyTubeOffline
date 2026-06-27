@@ -75,7 +75,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VH> {
             h.thumb.setImageBitmap(bmp);
             h.thumb.setScaleType(ImageView.ScaleType.CENTER_CROP);
         } else {
-            h.thumb.setImageResource(android.R.drawable.ic_media_play);
+            h.thumb.setImageResource(R.drawable.ic_play);
             h.thumb.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         }
 
