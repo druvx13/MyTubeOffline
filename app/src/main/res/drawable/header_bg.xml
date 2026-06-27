@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- header_bg.xml — replicates .header-box from the PHP stylesheet:
+     #e6e6e6 background with 1px #ccc bottom border. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/retro_header" />
+        </shape>
+    </item>
+    <item android:top="-1dp" android:right="-1dp" android:left="-1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/retro_border" />
+        </shape>
+    </item>
+</layer-list>

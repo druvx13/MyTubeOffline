@@ -1,0 +1,23 @@
+// Top-level build file — MyTubeOffline
+// AIDE Pro compatible: AGP 3.5.3 + Gradle 5.4.1
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.3'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

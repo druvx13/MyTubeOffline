@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 2006 retro palette, lifted directly from the PHP stylesheet -->
+    <color name="retro_bg">#FFF1F1F1</color>
+    <color name="retro_header">#FFE6E6E6</color>
+    <color name="retro_box_bg">#FFFFFFFF</color>
+    <color name="retro_border">#FFCCCCCC</color>
+    <color name="retro_text">#FF333333</color>
+    <color name="retro_text_dim">#FF666666</color>
+    <color name="retro_red">#FFCC0000</color>
+    <color name="retro_link">#FF0033CC</color>
+    <color name="retro_button_bg">#FFDDDDDD</color>
+    <color name="retro_button_border">#FF666666</color>
+    <color name="retro_controls_bg">#FF000000</color>
+
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

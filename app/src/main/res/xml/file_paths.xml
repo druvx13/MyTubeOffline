@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- file_paths.xml — declares which app-private paths FileProvider is allowed to expose.
+     Currently the app does not need to share video files with other apps (we play them
+     via file:// in our own VideoView, which is fine inside our own process). The provider
+     is registered here so future features (e.g. share a video via Intent) can use it. -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path
+        name="uploads"
+        path="uploads/" />
+    <external-files-path
+        name="external"
+        path="." />
+</paths>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ic_launcher.xml — a simple "play button inside a rounded red square".
+     Vector drawable so we don't need per-density PNGs (saves AIDE Pro build time). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background: classic YouTube-style red, rounded -->
+    <path
+        android:fillColor="#FFCC0000"
+        android:pathData="M14,0 L94,0 Q108,0 108,14 L108,94 Q108,108 94,108 L14,108 Q0,108 0,94 L0,14 Q0,0 14,0 Z" />
+
+    <!-- Play triangle (white) -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M42,32 L42,76 L78,54 Z" />
+</vector>

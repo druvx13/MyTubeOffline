@@ -1,0 +1,95 @@
+# Release APK builder — triggers when you push a tag like v1.0.0.
+# Builds a release APK signed with the keystore committed at
+# app/mytube.keystore (credentials hardcoded in app/build.gradle).
+#
+# This is fine for a PRIVATE repo with an offline-only app. If you ever
+# fork this into a public repo, GENERATE A NEW KEYSTORE and switch to
+# GitHub Secrets — never publish someone else's signing key.
+
+name: Release APK
+
+on:
+  push:
+    tags:
+      - 'v*'    # triggers on v1.0.0, v2.3.4, etc.
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name to release (e.g. v1.0.0)'
+        required: true
+        default: 'v0.1.0'
+
+jobs:
+  release:
+    name: Build & release signed APK
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write    # needed to create the GitHub Release
+
+    steps:
+      - name: Resolve tag name
+        id: tag
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo "name=${{ inputs.tag }}" >> $GITHUB_OUTPUT
+          else
+            echo "name=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Verify committed keystore exists
+        run: |
+          if [ ! -f app/mytube.keystore ]; then
+            echo "::error::app/mytube.keystore not found — did the keystone get committed?"
+            exit 1
+          fi
+          echo "Keystore present: $(ls -la app/mytube.keystore)"
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+
+      - name: Set up Gradle 5.4.1
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '5.4.1'
+
+      - name: Build signed release APK
+        run: gradle assembleRelease --no-daemon --stacktrace
+
+      # Quick sanity check: confirm the APK was actually signed (not unsigned-fallback)
+      - name: Verify APK is signed
+        run: |
+          APK=$(find app/build/outputs/apk/release -name "*.apk" | head -1)
+          echo "APK: $APK"
+          if [ -z "$APK" ]; then
+            echo "::error::No release APK was produced"
+            exit 1
+          fi
+          # Use apksigner if available, otherwise fall back to jarsigner verification
+          if command -v apksigner >/dev/null 2>&1; then
+            apksigner verify --print-certs "$APK" | head -8 || { echo "::error::APK signature verification failed"; exit 1; }
+          else
+            jarsigner -verify -verbose -certs "$APK" | head -8 || { echo "::error::APK signature verification failed"; exit 1; }
+          fi
+          echo "OK: APK is signed"
+
+      - name: Rename APK to include tag
+        run: |
+          mkdir -p release-out
+          APK=$(find app/build/outputs/apk/release -name "*.apk" | head -1)
+          cp "$APK" "release-out/MyTubeOffline-${{ steps.tag.outputs.name }}.apk"
+          ls -la release-out/
+
+      - name: Create GitHub Release and attach APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.name }}
+          name: MyTube Offline ${{ steps.tag.outputs.name }}
+          generate_release_notes: true
+          files: release-out/*.apk
+          prerelease: false

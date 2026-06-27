@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme — AppCompat Light, but tinted to match the 2006 retro palette.
+         No Material 3 / DayNight — the original PHP site is intentionally light-only. -->
+    <style name="Theme.MyTube" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/retro_red</item>
+        <item name="colorPrimaryDark">@color/retro_header</item>
+        <item name="colorAccent">@color/retro_link</item>
+        <item name="android:windowBackground">@color/retro_bg</item>
+        <item name="android:textColorPrimary">@color/retro_text</item>
+        <item name="android:textColorSecondary">@color/retro_text_dim</item>
+        <item name="android:textColorLink">@color/retro_link</item>
+    </style>
+
+</resources>

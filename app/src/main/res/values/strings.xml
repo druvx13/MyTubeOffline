@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyTube Offline</string>
+    <string name="menu">Menu</string>
+
+    <!-- Actions -->
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
+    <string name="signup">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="upload_video">Upload Video</string>
+    <string name="account">Account</string>
+    <string name="delete">Delete</string>
+    <string name="pick_video">Pick a video…</string>
+    <string name="play_pause">Play / Pause</string>
+
+    <!-- Labels -->
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="my_videos">My Videos</string>
+
+    <!-- Prompts -->
+    <string name="no_account_signup">Don\'t have an account? Sign up</string>
+    <string name="already_have_account">Already have an account? Log in</string>
+    <string name="no_videos_yet">No videos yet. Tap Upload to add one.</string>
+    <string name="no_description">(no description)</string>
+    <string name="picked_file">Picked: %1$s</string>
+
+    <!-- Composed -->
+    <string name="views_count">%1$d views</string>
+    <string name="by_uploader">by %1$s</string>
+
+    <!-- Errors -->
+    <string name="err_fields_required">All fields are required.</string>
+    <string name="err_invalid_email">Please enter a valid email address.</string>
+    <string name="err_user_exists">Username or email already exists.</string>
+    <string name="err_signup_failed">Could not create account. Try again.</string>
+    <string name="signup_success">Account created! Please log in.</string>
+    <string name="err_invalid_credentials">Invalid username or password.</string>
+    <string name="err_pick_first">Pick a video file first.</string>
+    <string name="err_title_required">Title is required.</string>
+    <string name="err_upload_failed">Could not copy the video into app storage.</string>
+    <string name="err_db_insert">Database error while saving the video.</string>
+    <string name="err_video_not_found">Video not found.</string>
+    <string name="err_video_file_missing">Video file is missing from app storage.</string>
+    <string name="err_playback">Could not play this video.</string>
+    <string name="upload_success">Upload complete!</string>
+
+    <!-- Menu -->
+    <string name="menu_login">Log In</string>
+    <string name="menu_account">Account</string>
+    <string name="menu_logout">Log Out</string>
+</resources>
